@@ -72,11 +72,8 @@ class Julia {
       for( let u = 0; u < this.width; u++ ) {
         for( let v = 0; v < this.height; v++ ) {
           let z = {
-            // r: this.xFromU( u, this.width, this.minX, this.maxX ),
-            r: u / this.width * ( this.maxX - this.minX ) + this.minX,
-
-            // i: this.yFromV( v, this.height, this.minY, this.maxY )
-            i: this.maxY - v / this.height * ( this.maxY - this.minY )
+            r: this.xFromU( u, this.width, this.minX, this.maxX ),
+            i: this.yFromV( v, this.height, this.minY, this.maxY )
           }
           let result = z;
           let iter = 0;
@@ -122,20 +119,15 @@ class Julia {
   
   juliafunc( z ) {
     return {
-      // r: Math.pow( z.r, 2 ) - Math.pow( z.i, 2 ) + this.c.r,
       r: z.r * z.r - z.i * z.i + this.c.r,
       i: 2 * z.i * z.r + this.c.i
     };
   }
   
   radius( z ) {
-    // return Math.sqrt( Math.pow( z.i, 2 ) + Math.pow( z.r, 2 ) );
     return Math.sqrt( z.i * z.i + z.r * z.r );
   }
   
-  xyFromUV( uv, widhei, min, max ) {
-    return min + ( uv / widhei ) * ( max - min );
-  }
   xFromU( u, width, min, max ) {
     return u / width * ( max - min ) + min;
   }
@@ -145,26 +137,6 @@ class Julia {
   }
   
   createColorMap( ) {
-    /*
-    let len = this.colors.length;
-    let incr = 2 / len; // our boundary is 2 so only looking at values less than 2
-    let cmapkeys = [];
-    let cmap = {};
-    for( let i = 0; i < len; i++ ) {
-      let key = ( i * incr ).toString();
-      cmap[ key ] = this.colors[ i ];
-      cmapkeys.push( key );
-    }
-    console.log( `color map has ${len} colors` );
-    return ( rad ) => {
-      for ( let i = 0; i < len; i++ ) {
-        if( rad < parseFloat( cmapkeys[i] ) ) {
-          return cmap[ cmapkeys[i] ];
-        }
-      }
-      return cmap[ cmapkeys[len - 1 ]];
-    };
-    */
     let len = this.colors.length;
     let incr = 2 / len; // our boundary is 2 so only looking at values less than 2
     return  rad => {
@@ -283,10 +255,6 @@ class Mandelbrot {
     return Math.sqrt( z.i * z.i + z.r * z.r );
   }
   
-  xyFromUV( uv, widhei, min, max ) {
-    return min + ( uv / widhei ) * ( max - min );
-  }
-  
   xFromU( u, width, min, max ) {
     return u / width * ( max - min ) + min;
   }
@@ -296,27 +264,6 @@ class Mandelbrot {
   }
   
   createColorMap( ) {
-    /*
-    let len = this.colors.length;
-    let incr = 2 / len; // our boundary is 2 so only looking at values less than 2
-    let cmapkeys = [];
-    let cmap = {};
-    for( let i = 0; i < len; i++ ) {
-      let key = ( i * incr ).toString();
-      cmap[ key ] = this.colors[ i ];
-      cmapkeys.push( key );
-    }
-    console.log( `color map has ${len} colors` );
-    return ( rad ) => {
-      for ( let i = 0; i < len; i++ ) {
-        // console.log( rad );
-        if( rad < parseFloat( cmapkeys[i] ) ) {
-          return cmap[ cmapkeys[i] ];
-        }
-      }
-      return cmap[ cmapkeys[len - 1 ]];
-    };
-    */
     let len = this.colors.length;
     let incr = 2 / len; // our boundary is 2 so only looking at values less than 2
     return  rad => {
