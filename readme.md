@@ -1,8 +1,8 @@
 <h1 align="center"> Mandelbrot / Julia Set Fractal Generator </h1>
 
 <p align="center">
-  <img src="pics/mandel.jpg" alt="mandelbrot" /> 
-  <img src="pics/julia.jpg" alt="julia" /> 
+  <img src="pics/mandel.jpg" alt="mandelbrot" > 
+  <img src="pics/julia.jpg" alt="julia" > 
 </p>
 
 <p align="center">
