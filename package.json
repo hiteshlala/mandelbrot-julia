@@ -1,0 +1,20 @@
+{
+  "name": "mandelbrot-julia",
+  "version": "0.0.1",
+  "description": "A Mandelbrot and Julia set fractal image CLI generator.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node example.js"
+  },
+  "keywords": [
+    "Mandelbrot",
+    "Julia",
+    "Fractals"
+  ],
+  "author": "Hitesh Lala",
+  "license": "MIT",
+  "dependencies": {
+    "jimp": "^0.9.3",
+    "tinygradient": "^1.1.1"
+  }
+}
